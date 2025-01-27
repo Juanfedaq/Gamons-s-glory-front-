@@ -13,6 +13,7 @@
   width: 100%;
   top: 0;
   left: 0;
+  z-index: 2;
   display: flex;
   justify-content: space-between;
   padding: 20px;

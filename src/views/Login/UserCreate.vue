@@ -76,12 +76,14 @@ export default {
   form {
     position: absolute;
     bottom: 30%;
+    z-index: 2;
   }
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    animation: fade 4s forwards;
   }
 
   form {
@@ -105,6 +107,16 @@ export default {
       text-decoration: underline;
       color: color(cPrimary);
     }
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
 </style>
