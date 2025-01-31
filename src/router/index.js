@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "@/views/HomePage.vue";
-import SystemPage from "@/views/SystemPage.vue";
+import AppPage from "@/views/AppPage.vue";
 import UserLogin from "@/views/Login/UserLogin.vue";
 import UserReset from "@/views/Login/UserReset.vue";
 import UserCreate from "@/views/Login/UserCreate.vue";
@@ -15,7 +15,7 @@ const routes = [
   {
     path: "/app",
     name: "app",
-    component: SystemPage,
+    component: AppPage,
   },
   {
     path: "/login",

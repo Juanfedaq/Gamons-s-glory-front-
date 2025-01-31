@@ -3,17 +3,7 @@
 </template>
 
 <style lang="scss">
-* {
-  box-sizing: border-box;
-}
-
 body {
-  margin: 0;
-  padding: 0;
   font-family: font(primary);
-}
-
-a {
-  text-decoration: none;
 }
 </style>

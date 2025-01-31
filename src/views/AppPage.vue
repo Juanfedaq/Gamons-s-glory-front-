@@ -1,16 +1,16 @@
 <template>
   <div class="mainsystem">
-    <HeaderMenu />
+    <AppMenu />
     <img src="../../public/img/bg2.svg" />
   </div>
 </template>
 
 <script>
-import HeaderMenu from "@/components/HeaderMenu.vue";
+import AppMenu from "@/components/AppMenu.vue";
 
 export default {
   components: {
-    HeaderMenu,
+    AppMenu,
   },
 };
 </script>
