@@ -165,6 +165,7 @@ export default {
       text-decoration: none;
 
       .logo {
+
         img {
           max-height: 40px;
           width: auto;
