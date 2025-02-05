@@ -1,6 +1,6 @@
 <template>
   <div class="playergraphic" v-if="columns.length">
-    <div v-for="(column, index) in columns" :key="index">
+    <div class="playergraphic__item" v-for="(column, index) in columns" :key="index">
       <p>{{ column.number }}</p>
       <span :class="'span span-' + (index + 1)" :style="`height:${column.height}%`"></span>
       <h2>{{ column.id }}</h2>
@@ -67,9 +67,66 @@ export default {
 
 <style scoped lang="scss">
 .playergraphic {
+  position: relative;
   display: flex;
+  border: 2px solid color(cPrimary);
   gap: 16px;
-  width: 100%;
+  padding: 16px;
+  z-index: 2;
   height: 100%;
+  &__item{
+    display: block;
+    width: 100%;
+    p{
+      font-size: 16px;
+      font-weight: 800;
+      color: color(cWhite);
+      writing-mode: vertical-lr;
+      width: 100%;
+    }
+    .span{
+      display: block;
+      &-1{
+        background: color(cPrimary);
+      }
+      &-2{
+        background: color(cPrimary);
+        opacity: .6;
+      }
+      &-3{
+        background: color(cCritic);
+      }
+      &-4{
+        background: color(cCritic);
+        opacity: .6;
+      }
+      &-5{
+        background: color(cHaste);
+      }
+      &-6{
+        background: color(cHaste);
+        opacity: .6;
+      }
+      &-7{
+        background: color(cMastery);
+      }
+      &-8{
+        background: color(cMastery);
+        opacity: .6;
+      }
+      &-9{
+        background: color(cVersatility);
+      }
+      &-10{
+        background: color(cVersatility);
+        opacity: .6;
+      }
+    }
+    h2{
+      font-size: 20px;
+      font-weight: 800;
+      color: color(cWhite);
+    }
+  }
 }
 </style>

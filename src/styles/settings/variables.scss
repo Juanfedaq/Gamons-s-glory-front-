@@ -4,6 +4,11 @@ $colors: (
   cPrimary: '#896125',
   cSecondary: '#C9AA4E',
 
+  cCritic: '#C41E3A',
+  cHaste: '#33937F',
+  cMastery: '#9747FF',
+  cVersatility: '#0070DD',
+
   cDps: '#FF0000',
   cHealer: '#05FF00',
   cTank: '#FF8A00',
@@ -35,6 +40,7 @@ $colors: (
 $fonts: (
   primary: 'CenturyGothic',
 );
+
 :root {
   @each $name, $font in $fonts {
     --font-#{$name}: #{$font};

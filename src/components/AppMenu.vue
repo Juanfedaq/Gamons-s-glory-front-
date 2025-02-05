@@ -27,8 +27,8 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px;
-  width: 100vw;
+  padding-bottom: 8px;
+  width: 100%;
 
   &__wrapper {
     display: flex;
