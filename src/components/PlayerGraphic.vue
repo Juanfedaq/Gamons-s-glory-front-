@@ -1,9 +1,11 @@
 <template>
   <div class="playergraphic" v-if="columns.length">
     <div class="playergraphic__item" v-for="(column, index) in columns" :key="index">
-      <p>{{ column.number }}</p>
-      <span :class="'span span-' + (index + 1)" :style="`height:${column.height}%`"></span>
-      <h2>{{ column.id }}</h2>
+      <span :class="'span span-' + (index + 1)" :style="`height:${column.height}%`">
+        <p>{{ column.number }}</p>
+        <h2>{{ column.id }}</h2>
+      </span>
+
     </div>
   </div>
 </template>
@@ -73,60 +75,83 @@ export default {
   gap: 16px;
   padding: 16px;
   z-index: 2;
-  height: 100%;
-  &__item{
+  height: calc(100% - 50px);
+
+  &__item {
     display: block;
     width: 100%;
-    p{
-      font-size: 16px;
-      font-weight: 800;
-      color: color(cWhite);
-      writing-mode: vertical-lr;
+    display: flex;
+
+
+    .span {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      align-items: center;
+      align-self: flex-end;
       width: 100%;
-    }
-    .span{
-      display: block;
-      &-1{
+
+      p {
+        font-size: 16px;
+        font-weight: 800;
+        color: color(cWhite);
+        writing-mode: vertical-lr;
+        width: 100%;
+      }
+
+      &-1 {
         background: color(cPrimary);
       }
-      &-2{
+
+      &-2 {
         background: color(cPrimary);
         opacity: .6;
       }
-      &-3{
+
+      &-3 {
         background: color(cCritic);
       }
-      &-4{
+
+      &-4 {
         background: color(cCritic);
         opacity: .6;
       }
-      &-5{
+
+      &-5 {
         background: color(cHaste);
       }
-      &-6{
+
+      &-6 {
         background: color(cHaste);
         opacity: .6;
       }
-      &-7{
+
+      &-7 {
         background: color(cMastery);
       }
-      &-8{
+
+      &-8 {
         background: color(cMastery);
         opacity: .6;
       }
-      &-9{
+
+      &-9 {
         background: color(cVersatility);
       }
-      &-10{
+
+      &-10 {
         background: color(cVersatility);
         opacity: .6;
       }
+
+      h2 {
+        font-size: 20px;
+        font-weight: 800;
+        color: color(cWhite);
+      }
     }
-    h2{
-      font-size: 20px;
-      font-weight: 800;
-      color: color(cWhite);
-    }
+
+
   }
 }
 </style>

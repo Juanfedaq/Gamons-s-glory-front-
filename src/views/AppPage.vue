@@ -1,6 +1,7 @@
 <template>
   <div class="mainsystem" @mousemove="handleMouseMove">
-    <span v-for="(block, index) in blocks" :key="index" :class="'block block-' + (index + 1)" :style="block.style"></span>
+    <span v-for="(block, index) in blocks" :key="index" :class="'block block-' + (index + 1)"
+      :style="block.style"></span>
     <AppMenu />
     <PlayerGraphic />
   </div>
@@ -60,6 +61,7 @@ export default {
   border: 2px solid color(cPrimary);
   transition: transform 0.1s ease-out;
   filter: blur(5px);
+
   &-1 {
     top: 40%;
     left: 50%;
