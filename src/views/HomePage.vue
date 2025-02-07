@@ -1,10 +1,6 @@
 <template>
   <div class="homepage">
-    <!-- <HeaderMenu /> -->
-    <!-- <iframe
-      src="https://www.youtube.com/embed/RjIrxeGUpVk?autoplay=1&loop=1&mute=1&mute=1&controls=0&rel=0&playsinline=1&playlist=RjIrxeGUpVk"
-      frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-    </iframe> -->
+    <HeaderMenu />
     <video controls="false" autoplay muted loop>
       <source :src="videoSource" type="video/mp4">
       erro

@@ -1,6 +1,6 @@
 <template>
   <div class="loginpage">
-    <!-- <HeaderMenu /> -->
+    <HeaderMenu />
     <form @submit.prevent="handleLogin">
       <CustomInput type="email" id="email" v-model="email" placeholder="Email" required />
       <CustomInput type="password" id="password" v-model="password" placeholder="Password" required />

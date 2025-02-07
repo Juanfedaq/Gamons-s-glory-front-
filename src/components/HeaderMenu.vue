@@ -130,9 +130,14 @@
         </ul>
       </div> -->
     </nav>
-    <router-link to="/login">
-      App
-    </router-link>
+    <div>
+      <router-link to="/login">
+        login
+      </router-link>
+      <router-link to="/app">
+        App
+      </router-link>
+    </div>
   </header>
 </template>
 
@@ -148,6 +153,7 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 2;
   color: color(cWhite);
   padding: 8px 20px;
   display: flex;
