@@ -6,7 +6,7 @@
           <img src="@/assets/img/logo.svg" alt="Logo da Guild" />
         </figure>
       </router-link>
-      <div class="headermenu__wrapper__item">
+      <!-- <div class="headermenu__wrapper__item">
         <h2>Class Guides</h2>
         <ul class="headermenu__wrapper__item__list">
           <li>
@@ -128,7 +128,7 @@
           <li>Raid 1</li>
           <li>Raid 2</li>
         </ul>
-      </div>
+      </div> -->
     </nav>
     <router-link to="/login">
       App

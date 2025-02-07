@@ -1,13 +1,14 @@
 <template>
-  <div class="playergraphic" v-if="columns.length">
+  <section class="playergraphic" v-if="columns.length">
     <div class="playergraphic__item" v-for="(column, index) in columns" :key="index">
       <span :class="'span span-' + (index + 1)" :style="`height:${column.height}%`">
-        <p>{{ column.number }}</p>
+        <div class="number-stack">
+          <p>{{ formatNumber(column.number) }}</p>
+        </div>
         <h2>{{ column.id }}</h2>
       </span>
-
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -17,23 +18,25 @@ export default {
     return {
       columns: [],
       // APIFAKE
-      data: {
-        pm: 20000,
-        pp: 40000,
-        mm: 10000,
-        mp: 400,
-        vm: 2000,
-        vp: 400,
-        cm: 2000,
-        cp: 400,
-        hm: 20000,
-        hp: 400,
-      }
+      data: this.generateRandomData(),
     };
   },
   methods: {
+    generateRandomData() {
+      return {
+        pm: Math.floor(Math.random() * 100000),
+        pp: Math.floor(Math.random() * 100000),
+        mm: Math.floor(Math.random() * 100000),
+        mp: Math.floor(Math.random() * 100000),
+        vm: Math.floor(Math.random() * 100000),
+        vp: Math.floor(Math.random() * 100000),
+        cm: Math.floor(Math.random() * 100000),
+        cp: Math.floor(Math.random() * 100000),
+        hm: Math.floor(Math.random() * 100000),
+        hp: Math.floor(Math.random() * 100000),
+      };
+    },
     verificarMaior() {
-
       return Math.max(...this.columns.map(column => column.number));
     },
     getItens() {
@@ -53,12 +56,19 @@ export default {
         this.columns[index].height = (column.number * 100) / maior
         this.columns[index].id = this.getName(index)
       })
-      console.log(this.columns)
     },
     getName(index) {
       const name = ["P", "P", "C", "C", "H", "H", "M", "M", "V", "V"]
       return name[index]
-    }
+    },
+    formatNumber(value) {
+      if (value >= 1000000) {
+        return (value / 1000000).toFixed(1).replace(".0", "") + "M"; // Ex: 2.1M
+      } else if (value >= 1000) {
+        return (value / 1000).toFixed(1).replace(".0", "") + "k"; // Ex: 41.3k
+      }
+      return value.toString(); // Exibe normal se for menor que 1.000
+    },
   }
   ,
   created() {//entra aqui logo quando carrega o componente
@@ -73,15 +83,14 @@ export default {
   display: flex;
   border: 2px solid color(cPrimary);
   gap: 16px;
-  padding: 16px;
+  padding: 52px 16px 52px;
   z-index: 2;
-  height: calc(100% - 50px);
+  height: 100%;
 
   &__item {
     display: block;
     width: 100%;
     display: flex;
-
 
     .span {
       display: flex;
@@ -90,13 +99,47 @@ export default {
       align-items: center;
       align-self: flex-end;
       width: 100%;
+      position: relative;
+      filter: drop-shadow(2px 4px 6px black);
 
-      p {
+      .number-stack {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        left: 50%;
+        top: 0px;
+        transform: translate(-50%, calc(-100% - 16px));
+
+        p {
+          margin: -3px 0px;
+          font-size: 14px;
+          font-weight: 400;
+          color: color(cWhite);
+        }
+      }
+
+      h2 {
         font-size: 16px;
-        font-weight: 800;
+        font-weight: 400;
         color: color(cWhite);
-        writing-mode: vertical-lr;
-        width: 100%;
+        position: absolute;
+        left: 50%;
+        bottom: 0px;
+        transform: translate(-50%, calc(100% + 16px))
+      }
+
+      &-2,
+      &-4,
+      &-6,
+      &-8,
+      &-10 {
+        filter: brightness(.5) drop-shadow(2px 4px 6px black);
+
+        p,
+        h2 {
+          filter: brightness(1)
+        }
       }
 
       &-1 {
@@ -105,7 +148,6 @@ export default {
 
       &-2 {
         background: color(cPrimary);
-        opacity: .6;
       }
 
       &-3 {
@@ -114,7 +156,6 @@ export default {
 
       &-4 {
         background: color(cCritic);
-        opacity: .6;
       }
 
       &-5 {
@@ -123,7 +164,6 @@ export default {
 
       &-6 {
         background: color(cHaste);
-        opacity: .6;
       }
 
       &-7 {
@@ -132,7 +172,6 @@ export default {
 
       &-8 {
         background: color(cMastery);
-        opacity: .6;
       }
 
       &-9 {
@@ -141,17 +180,8 @@ export default {
 
       &-10 {
         background: color(cVersatility);
-        opacity: .6;
-      }
-
-      h2 {
-        font-size: 20px;
-        font-weight: 800;
-        color: color(cWhite);
       }
     }
-
-
   }
 }
 </style>

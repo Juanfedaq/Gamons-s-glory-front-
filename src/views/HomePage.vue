@@ -1,12 +1,14 @@
 <template>
   <div class="homepage">
     <!-- <HeaderMenu /> -->
-    <iframe 
-        src="https://www.youtube.com/embed/RjIrxeGUpVk?autoplay=1&loop=1&mute=1&mute=1&controls=0"
-        frameborder="0" 
-        allow="autoplay; encrypted-media" 
-        allowfullscreen>
-      </iframe>
+    <!-- <iframe
+      src="https://www.youtube.com/embed/RjIrxeGUpVk?autoplay=1&loop=1&mute=1&mute=1&controls=0&rel=0&playsinline=1&playlist=RjIrxeGUpVk"
+      frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+    </iframe> -->
+    <video controls="false" autoplay muted loop>
+      <source :src="videoSource" type="video/mp4">
+      erro
+    </video>
     <span>
       <h1>coming soon</h1>
     </span>
@@ -20,6 +22,11 @@ export default {
   components: {
     HeaderMenu,
   },
+  data() {
+    return {
+      videoSource: require('@/assets/videos/video1.mp4')
+    }
+  }
 };
 </script>
 
@@ -29,12 +36,14 @@ export default {
   width: 100vw;
   overflow: hidden;
   position: relative;
-  iframe{
+
+  iframe {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-  span{
+
+  span {
     position: absolute;
     left: 0;
     top: 0;
@@ -44,13 +53,13 @@ export default {
     justify-content: center;
     align-items: center;
     filter: drop-shadow(2px 4px 6px black);
+
     // background: rgb(137,97,37);
     // background: linear-gradient(0deg, rgba(137,97,37,0.3) 0%, rgba(137,97,37,1) 50%, rgba(137,97,37,0.3) 100%);
-    h1{
+    h1 {
       font-size: clamp(15rem, 50vw, 10rem);
       color: color(cWhite);
     }
   }
 }
-
 </style>

@@ -3,7 +3,15 @@
     <span v-for="(block, index) in blocks" :key="index" :class="'block block-' + (index + 1)"
       :style="block.style"></span>
     <AppMenu />
-    <PlayerGraphic />
+    <div class="mainsystem__row">
+      <PlayerGraphic />
+      <PlayerGraphic />
+      <PlayerGraphic />
+      <PlayerGraphic />
+      <PlayerGraphic />
+      <PlayerGraphic />
+      <PlayerGraphic />
+    </div>
   </div>
 </template>
 
@@ -54,6 +62,23 @@ export default {
   background: color(cBlack);
   padding: 16px;
   overflow: hidden;
+
+  &__row {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 8px;
+    height: calc(100% - 50px);
+
+    section {
+      height: calc(50% - 4px);
+      grid-column: span 2;
+
+      &:nth-child(1),
+      &:nth-child(2) {
+        grid-column: span 5;
+      }
+    }
+  }
 }
 
 .block {
