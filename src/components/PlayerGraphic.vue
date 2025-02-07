@@ -18,15 +18,15 @@ export default {
       columns: [],
       // APIFAKE
       data: {
-        pm: 200,
-        pp: 400,
-        mm: 200,
+        pm: 20000,
+        pp: 40000,
+        mm: 10000,
         mp: 400,
-        vm: 200,
+        vm: 2000,
         vp: 400,
-        cm: 200,
+        cm: 2000,
         cp: 400,
-        hm: 200,
+        hm: 20000,
         hp: 400,
       }
     };
