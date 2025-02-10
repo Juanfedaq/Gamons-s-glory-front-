@@ -1,47 +1,26 @@
 <template>
-  <div class="apppage" @mousemove="handleMouseMove">
-    <span v-for="(block, index) in blocks" :key="index" :class="'block block-' + (index + 1)"
-      :style="block.style"></span>
-    <AppMenu />
-    <router-view />
+  <div class="apppage__dashboard">
+    <PlayerList />
+    <GroupGraphic />
+    <PlayerGraphic />
+    <PlayerGraphic />
+    <PlayerGraphic />
+    <PlayerGraphic />
+    <PlayerGraphic />
   </div>
 </template>
 
 <script>
-
-import AppMenu from '@/components/AppMenu.vue';
+import GroupGraphic from "@/components/GroupGraphic.vue";
+import PlayerList from "@/components/PlayerList.vue";
+import PlayerGraphic from "@/components/PlayerGraphic.vue";
 
 export default {
   components: {
-    AppMenu
-  },
-  data() {
-    return {
-      blocks: Array.from({ length: 10 }, () => ({
-        x: 0,
-        y: 0,
-        style: {},
-      })),
-    };
-  },
-  methods: {
-    handleMouseMove(event) {
-      const { clientX, clientY } = event;
-      const centerX = window.innerWidth / 2;
-      const centerY = window.innerHeight / 2;
-
-      this.blocks.forEach((block, index) => {
-        const speed = (index + 1) * 0.1;
-        const moveX = (clientX - centerX) * speed * 0.02;
-        const moveY = (clientY - centerY) * speed * 0.02;
-
-        block.style = {
-          transform: `translate(${moveX}px, ${moveY}px)`,
-          transition: "transform 0.1s ease-out",
-        };
-      });
-    },
-  },
+    PlayerGraphic,
+    GroupGraphic,
+    PlayerList,
+  }
 };
 </script>
 

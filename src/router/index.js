@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "@/views/HomePage.vue";
 import AppPage from "@/views/AppPage.vue";
+import GroupsPage from "@/views/GroupsPage.vue";
+import GroupPage from "@/views/GroupPage.vue";
 import UserLogin from "@/views/Login/UserLogin.vue";
 import UserReset from "@/views/Login/UserReset.vue";
 import UserCreate from "@/views/Login/UserCreate.vue";
@@ -13,9 +15,22 @@ const routes = [
     component: HomeView,
   },
   {
-    path: "/app",
-    name: "app",
+    path: "/groups",
     component: AppPage,
+    children: [
+      {
+        path: '',
+        component: GroupsPage,
+      },
+      {
+        path: ':groups',
+        component: GroupPage,
+      },
+      //  {
+      //   path: '/:group/:name',
+      //   component: AppPage,
+      // }
+    ],
   },
   {
     path: "/login",

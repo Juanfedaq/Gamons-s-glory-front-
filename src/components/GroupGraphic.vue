@@ -1,11 +1,11 @@
 <template>
-  <section class="playergraphic" v-if="columns.length">
-    <h2 class="playergraphic__title">User Name</h2>
-    <div class="playergraphic__wrapper">
-      <div class="playergraphic__wrapper__item" v-for="(column, index) in columns" :key="index">
+  <section class="groupgraphic" v-if="columns.length">
+    <h2 class="groupgraphic__title">Dungeon Priority</h2>
+    <div class="groupgraphic__wrapper">
+      <div class="groupgraphic__wrapper__item" v-for="(column, index) in columns" :key="index">
         <span :class="'span span-' + (index + 1)" :style="`height:${column.height}%`">
           <div class="number-stack">
-            <p>{{ formatNumber(column.number) }}</p>
+            <p>{{ column.number }}</p>
           </div>
           <h2>{{ column.id }}</h2>
         </span>
@@ -27,16 +27,14 @@ export default {
   methods: {
     generateRandomData() {
       return {
-        pm: Math.floor(Math.random() * 100000),
-        pp: Math.floor(Math.random() * 100000),
-        mm: Math.floor(Math.random() * 100000),
-        mp: Math.floor(Math.random() * 100000),
-        vm: Math.floor(Math.random() * 100000),
-        vp: Math.floor(Math.random() * 100000),
-        cm: Math.floor(Math.random() * 100000),
-        cp: Math.floor(Math.random() * 100000),
-        hm: Math.floor(Math.random() * 100000),
-        hp: Math.floor(Math.random() * 100000),
+        pm: Math.floor(Math.random() * 10),
+        pp: Math.floor(Math.random() * 10),
+        mm: Math.floor(Math.random() * 10),
+        mp: Math.floor(Math.random() * 10),
+        vm: Math.floor(Math.random() * 10),
+        vp: Math.floor(Math.random() * 10),
+        cm: Math.floor(Math.random() * 10),
+        cp: Math.floor(Math.random() * 10),
       };
     },
     verificarMaior() {
@@ -61,16 +59,8 @@ export default {
       })
     },
     getName(index) {
-      const name = ["P", "P", "C", "C", "H", "H", "M", "M", "V", "V"]
+      const name = ["GB", "COT", "MTS", "AK", "SOB", "DB", "NW", "SV"]
       return name[index]
-    },
-    formatNumber(value) {
-      if (value >= 1000000) {
-        return (value / 1000000).toFixed(1).replace(".0", "") + "M"; // Ex: 2.1M
-      } else if (value >= 1000) {
-        return (value / 1000).toFixed(1).replace(".0", "") + "k"; // Ex: 41.3k
-      }
-      return value.toString(); // Exibe normal se for menor que 1.000
     },
   }
   ,
@@ -81,7 +71,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.playergraphic {
+.groupgraphic {
   height: 100%;
   border: 2px solid color(cPrimary);
 
@@ -141,57 +131,36 @@ export default {
           transform: translate(-50%, calc(100% + 16px))
         }
 
-        &-2,
-        &-4,
-        &-6,
-        &-8,
-        &-10 {
-          filter: brightness(.5) drop-shadow(2px 4px 6px black);
-
-          p,
-          h2 {
-            filter: brightness(1)
-          }
-        }
-
         &-1 {
-          background: color(cPrimary);
+          background: #C547FF;
         }
 
         &-2 {
-          background: color(cPrimary);
+          background: #591288;
         }
 
         &-3 {
-          background: color(cCritic);
+          background: #5683F4;
         }
 
         &-4 {
-          background: color(cCritic);
+          background: #C41E3A;
         }
 
         &-5 {
-          background: color(cHaste);
+          background: #623309;
         }
 
         &-6 {
-          background: color(cHaste);
+          background: #C8AA4E;
         }
 
         &-7 {
-          background: color(cMastery);
+          background: #47BC66;
         }
 
         &-8 {
-          background: color(cMastery);
-        }
-
-        &-9 {
-          background: color(cVersatility);
-        }
-
-        &-10 {
-          background: color(cVersatility);
+          background: #8E3200;
         }
       }
     }

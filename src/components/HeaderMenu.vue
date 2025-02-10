@@ -134,7 +134,7 @@
       <router-link to="/login">
         login
       </router-link>
-      <router-link to="/app">
+      <router-link to="/groups">
         App
       </router-link>
     </div>
