@@ -73,7 +73,7 @@ export default {
 <style scoped lang="scss">
 .groupgraphic {
   height: 100%;
-  border: 2px solid color(cPrimary);
+  border: 1px solid color(cPrimary);
 
   &__title {
     text-align: center;

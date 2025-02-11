@@ -59,7 +59,7 @@
 
 <style scoped lang="scss">
 .playerlist {
-  border: 2px solid color(cPrimary);
+  border: 1px solid color(cPrimary);
   text-align: center;
   height: 100%;
   display: flex;
@@ -84,7 +84,7 @@
     gap: 8px;
 
     &__item {
-      border: 2px solid color(cPrimary);
+      border: 1px solid color(cPrimary);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -94,7 +94,7 @@
       &__userimage {
         width: 64px;
         height: 64px;
-        border: 2px solid color(cPrimary);
+        border: 1px solid color(cPrimary);
         position: relative;
 
         img {
@@ -110,7 +110,7 @@
           width: 32px;
           object-fit: cover;
           background: color(cBlack);
-          border: 2px solid color(cPrimary);
+          border: 1px solid color(cPrimary);
 
           img {
             height: 100%;

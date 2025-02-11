@@ -1,5 +1,5 @@
 <template>
-  <section class="playergraphic" v-if="columns.length">
+  <router-link class="playergraphic" v-if="columns.length" to="/:group/:name">
     <h2 class="playergraphic__title">User Name</h2>
     <div class="playergraphic__wrapper">
       <div class="playergraphic__wrapper__item" v-for="(column, index) in columns" :key="index">
@@ -11,12 +11,11 @@
         </span>
       </div>
     </div>
-  </section>
+  </router-link>
 </template>
 
 <script>
 export default {
-  name: "PlayerGraphic",
   data() {
     return {
       columns: [],
@@ -83,7 +82,7 @@ export default {
 <style scoped lang="scss">
 .playergraphic {
   height: 100%;
-  border: 2px solid color(cPrimary);
+  border: 1px solid color(cPrimary);
 
   &__title {
     text-align: center;

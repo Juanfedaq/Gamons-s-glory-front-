@@ -33,12 +33,6 @@ export default {
   overflow: hidden;
   position: relative;
 
-  iframe {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
   span {
     position: absolute;
     left: 0;

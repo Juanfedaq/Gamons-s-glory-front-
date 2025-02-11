@@ -14,7 +14,7 @@
 
 <style scoped lang="scss">
 .groupitem {
-  border: 2px solid color(cPrimary);
+  border: 1px solid color(cPrimary);
 
   figure {
     width: 100%;

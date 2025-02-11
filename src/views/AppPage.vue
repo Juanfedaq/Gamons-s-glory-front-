@@ -8,7 +8,6 @@
 </template>
 
 <script>
-
 import AppMenu from '@/components/AppMenu.vue';
 
 export default {
@@ -53,30 +52,11 @@ export default {
   background: color(cBlack);
   padding: 16px;
   overflow: hidden;
-
-  &__dashboard {
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    gap: 8px;
-    height: calc(100% - 50px);
-    grid-template-rows: 50%;
-
-    section {
-      height: calc(50% - 4px);
-      grid-column: span 2;
-
-      &:nth-child(1),
-      &:nth-child(2) {
-        grid-column: span 5;
-      }
-    }
-  }
-
 }
 
 .block {
   position: absolute;
-  border: 2px solid color(cPrimary);
+  border: 1px solid color(cPrimary);
   transition: transform 0.1s ease-out;
   filter: blur(5px);
 

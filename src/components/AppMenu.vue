@@ -34,13 +34,13 @@ export default {
     display: flex;
     align-items: flex-end;
     gap: 20px;
-    border-bottom: 2px solid color(cPrimary);
+    border-bottom: 1px solid color(cPrimary);
 
     &__logo {
       height: 40px;
       width: 40px;
-      border: 2px solid color(cPrimary);
-      transform: translateY(2px);
+      border: 1px solid color(cPrimary);
+      transform: translateY(1px);
       padding: 2px;
 
       img {
