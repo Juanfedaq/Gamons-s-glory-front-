@@ -3,7 +3,12 @@
 </template>
 
 <style lang="scss">
-body {
+body,
+input {
   font-family: font(primary);
+}
+
+body {
+  cursor: url('../public/cursor.svg'), auto;
 }
 </style>

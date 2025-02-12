@@ -78,6 +78,7 @@ export default {
   &__title {
     text-align: center;
     color: color(cWhite);
+    font-weight: 400;
     margin-top: 8px;
   }
 

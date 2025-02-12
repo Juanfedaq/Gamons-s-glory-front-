@@ -1,5 +1,6 @@
 <template>
   <section class="inputitem">
+    <h2>Title</h2>
     <div v-for="(slot, slotName) in slots" :key="slotName" class="inputitem__item">
       <div class="inputitem__item__image">
         <figure>
@@ -93,9 +94,15 @@ export default {
   padding: 16px 16px 0px;
   max-height: calc(100vh - 76px);
 
+  h2 {
+    text-align: center;
+    color: color(cWhite);
+    font-weight: 400;
+  }
+
   &__item {
     display: flex;
-    height: calc(6.2% - 8px);
+    height: calc(6% - 8px);
     margin-bottom: 8px;
     align-items: flex-end;
     gap: 8px;

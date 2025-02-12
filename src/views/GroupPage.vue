@@ -2,11 +2,11 @@
   <div class="grouppage" :class="customClass">
     <PlayerList />
     <GroupGraphic />
-    <PlayerGraphic @mouseover="activeClass('active1')" @mouseleave="removeClass()" />
-    <PlayerGraphic @mouseover="activeClass('active2')" @mouseleave="removeClass()" />
-    <PlayerGraphic @mouseover="activeClass('active3')" @mouseleave="removeClass()" />
-    <PlayerGraphic @mouseover="activeClass('active4')" @mouseleave="removeClass()" />
-    <PlayerGraphic @mouseover="activeClass('active5')" @mouseleave="removeClass()" />
+    <PlayerGraphic @mouseover="activeClass('active1')" @mouseleave="removeClass()" index="0" />
+    <PlayerGraphic @mouseover="activeClass('active2')" @mouseleave="removeClass()" index="1" />
+    <PlayerGraphic @mouseover="activeClass('active3')" @mouseleave="removeClass()" index="2" />
+    <PlayerGraphic @mouseover="activeClass('active4')" @mouseleave="removeClass()" index="3" />
+    <PlayerGraphic @mouseover="activeClass('active5')" @mouseleave="removeClass()" index="4" />
   </div>
 </template>
 

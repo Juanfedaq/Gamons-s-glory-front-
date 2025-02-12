@@ -25,6 +25,8 @@ export default {
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
   height: calc(100% - 50px);
+  position: relative;
+  z-index: 3;
 
   section,
   a {

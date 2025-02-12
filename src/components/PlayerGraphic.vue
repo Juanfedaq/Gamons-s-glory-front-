@@ -1,5 +1,6 @@
 <template>
-  <router-link class="playergraphic" v-if="columns.length" to="/:group/:name">
+  <router-link class="playergraphic custom-cursor-wrapper" v-if="columns.length" to="/:group/:name"
+    @mousemove="updateCursor" @mouseleave="removeCursor">
     <h2 class="playergraphic__title">User Name</h2>
     <div class="playergraphic__wrapper">
       <div class="playergraphic__wrapper__item" v-for="(column, index) in columns" :key="index">
@@ -11,11 +12,15 @@
         </span>
       </div>
     </div>
+    <div class="custom-cursor custom-cursor--1" ref="cursorY"></div>
+    <div class="custom-cursor custom-cursor--2" ref="cursorX" :data-index="index"></div>
   </router-link>
+
 </template>
 
 <script>
 export default {
+  props: ['index'],
   data() {
     return {
       columns: [],
@@ -24,6 +29,29 @@ export default {
     };
   },
   methods: {
+    updateCursor(event) {
+      const cursorY = this.$refs.cursorY;
+      const cursorX = this.$refs.cursorX;
+      let index = cursorX.getAttribute('data-index')
+      let size = cursorX.closest('.playergraphic').offsetWidth * parseInt(index)
+      let gapSize = 16 + (parseInt(index) * 8)
+
+      console.log(size)
+      if (cursorY, cursorX) {
+        let posY = event.clientY - (window.innerHeight / 2) - 32
+        cursorY.style.transform = `translateY(${posY}px)`;
+        cursorX.style.transform = `translate(${(event.clientX - size - gapSize)}px, ${posY - 15}px)`;
+      }
+
+    },
+    removeCursor() {
+      const cursorY = this.$refs.cursorY;
+      const cursorX = this.$refs.cursorX;
+      if (cursorY, cursorX) {
+        cursorY.style.transform = `initial`;
+        cursorX.style.transform = `initial`;
+      }
+    },
     generateRandomData() {
       return {
         pm: Math.floor(Math.random() * 100000),
@@ -83,11 +111,14 @@ export default {
 .playergraphic {
   height: 100%;
   border: 1px solid color(cPrimary);
+  overflow: hidden;
+
 
   &__title {
     text-align: center;
     color: color(cWhite);
     margin-top: 8px;
+    font-weight: 400;
   }
 
   &__wrapper {
@@ -194,6 +225,33 @@ export default {
         }
       }
     }
+  }
+}
+
+.custom-cursor-wrapper {
+  // cursor: none;
+  position: relative;
+  /* Esconde o cursor padrão */
+}
+
+
+.custom-cursor {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  background: color(cPrimary);
+  pointer-events: none;
+  /* Impede que o cursor interfira nos cliques */
+
+  &--1 {
+    width: 100%;
+    height: 1px;
+
+  }
+
+  &--2 {
+    width: 1px;
+    height: 30px;
   }
 }
 </style>
