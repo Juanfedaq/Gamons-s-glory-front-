@@ -1,12 +1,14 @@
 <template>
   <header class="appmenu">
     <div class="appmenu__wrapper">
-      <figure class="appmenu__wrapper__logo">
-        <img src="@/assets/img/logo.svg" alt="">
-      </figure>
+      <router-link to="/groups">
+        <figure class="appmenu__wrapper__logo">
+          <img src="@/assets/img/logo.svg" alt="">
+        </figure>
+      </router-link>
       <h2>User Name</h2>
       <h3>Char name</h3>
-      <router-link to="">
+      <router-link to="/edit">
         <figure><img src="@/assets/img/edit.svg" alt=""></figure>
       </router-link>
     </div>
@@ -64,7 +66,6 @@ export default {
 
   a {
     color: color(cPrimary);
-    margin-bottom: 10px;
   }
 }
 </style>

@@ -8,6 +8,7 @@ import UserLogin from "@/views/Login/UserLogin.vue";
 import UserReset from "@/views/Login/UserReset.vue";
 import UserCreate from "@/views/Login/UserCreate.vue";
 import UserResetPass from "@/views/Login/UserResetPass.vue";
+import UserPage from "@/views/UserPage.vue";
 
 const routes = [
   {
@@ -15,10 +16,15 @@ const routes = [
     name: "home",
     component: HomeView,
   },
+
   {
     path: "/groups",
     component: AppPage,
     children: [
+      {
+        path: "/edit",
+        component: UserPage,
+      },
       {
         path: '',
         component: GroupsPage,
