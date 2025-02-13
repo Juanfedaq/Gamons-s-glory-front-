@@ -50,6 +50,7 @@ export default {
   a {
     height: calc(50% - 4px);
     grid-column: span 2;
+    transition: .3s ease-in-out;
 
     &:nth-child(1),
     &:nth-child(2) {
@@ -59,31 +60,36 @@ export default {
 
   &.active1 {
     a:not(:nth-child(1), :nth-child(2), :nth-child(3)) {
-      opacity: 0.5;
+      transform: translateY(8px);
+      border: 1px solid transparent
     }
   }
 
   &.active2 {
     a:not(:nth-child(1), :nth-child(2), :nth-child(4)) {
-      opacity: 0.5;
+      transform: translateY(8px);
+      border: 1px solid transparent;
     }
   }
 
   &.active3 {
     a:not(:nth-child(1), :nth-child(2), :nth-child(5)) {
-      opacity: 0.5;
+      transform: translateY(8px);
+      border: 1px solid transparent;
     }
   }
 
   &.active4 {
     a:not(:nth-child(1), :nth-child(2), :nth-child(6)) {
-      opacity: 0.5;
+      transform: translateY(8px);
+      border: 1px solid transparent;
     }
   }
 
   &.active5 {
     a:not(:nth-child(1), :nth-child(2), :nth-child(7)) {
-      opacity: 0.5;
+      transform: translateY(8px);
+      border: 1px solid transparent;
     }
   }
 

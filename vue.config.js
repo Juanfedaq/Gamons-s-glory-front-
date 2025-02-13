@@ -7,8 +7,8 @@ module.exports = defineConfig({
     loaderOptions: {
       sass: {
         additionalData: `
+        @import "@/styles/functions/functions.scss";
           @import "@/styles/layout/resets.scss";
-          @import "@/styles/functions/functions.scss";
           @import "@/styles/settings/fonts.scss";
           @import "@/styles/settings/breakpoints.scss";
           @import "@/styles/settings/icons.scss";

@@ -113,6 +113,9 @@ export default {
   border: 1px solid color(cPrimary);
   overflow: hidden;
 
+  &:hover {
+    background: color(cBlack);
+  }
 
   &__title {
     text-align: center;
@@ -229,19 +232,18 @@ export default {
 }
 
 .custom-cursor-wrapper {
-  // cursor: none;
+  cursor: none;
   position: relative;
-  /* Esconde o cursor padrão */
 }
 
 
 .custom-cursor {
   position: absolute;
+  z-index: 3;
   top: -1px;
   left: -1px;
   background: color(cPrimary);
   pointer-events: none;
-  /* Impede que o cursor interfira nos cliques */
 
   &--1 {
     width: 100%;

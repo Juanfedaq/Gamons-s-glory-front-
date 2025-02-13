@@ -27,8 +27,8 @@
         </div>
       </div>
       <div class="editstatus__form__buttons">
-        <CustomButton size="lg" variant="primary">Salvar</CustomButton>
-        <CustomButton size="lg" variant="primary">voltar</CustomButton>
+        <CustomButton size="lg" variant="primary">Save</CustomButton>
+        <RouterLink to="/groups/test">Back</RouterLink>
       </div>
     </form>
   </section>
@@ -38,6 +38,7 @@
 import PlayerGraphic from "@/components/PlayerGraphic.vue";
 import GroupGraphic from "@/components/GroupGraphic.vue";
 import CustomButton from "@/components/CustomButton.vue";
+import { RouterLink } from "vue-router";
 
 export default {
   components: {
@@ -131,6 +132,25 @@ export default {
       display: flex;
       justify-content: center;
       gap: 8px;
+
+      a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem 1rem;
+        font-family: font(primary);
+        font-weight: 400;
+        transition: all 0.3s ease;
+        margin-top: 40px;
+        border: 1px solid color(cPrimary);
+        background: none;
+        color: color(cPrimary);
+
+        &:hover {
+          background: color(cBlack);
+          color: color(cWhite);
+        }
+      }
     }
   }
 }

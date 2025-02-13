@@ -47,7 +47,6 @@ export default {
   padding: 0.5rem 1rem;
   font-family: font(primary);
   font-weight: 400;
-  cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 40px;
 }

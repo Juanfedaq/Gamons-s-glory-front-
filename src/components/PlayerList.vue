@@ -4,57 +4,35 @@
       <h2>Group Name</h2>
     </div>
     <div class="playerlist__wrapper">
-      <div class="playerlist__wrapper__item">
+      <div class="playerlist__wrapper__item" v-for="(user, index) in users" :key="index">
         <figure class="playerlist__wrapper__item__userimage">
           <img src="@/assets/img/default.jpg" />
-          <router-link class="playerlist__wrapper__item__userimage__edit" to="/">
-            <img src="@/assets/img/settings.svg" />
-          </router-link>
         </figure>
-        <h2 class="playerlist__wrapper__item__title">User Name</h2>
-      </div>
-      <div class="playerlist__wrapper__item">
-        <figure class="playerlist__wrapper__item__userimage">
-          <img src="@/assets/img/default.jpg" />
-          <router-link class="playerlist__wrapper__item__userimage__edit" to="/">
-            <img src="@/assets/img/settings.svg" />
-          </router-link>
-        </figure>
-        <h2 class="playerlist__wrapper__item__title">User Name</h2>
-      </div>
-      <div class="playerlist__wrapper__item">
-        <figure class="playerlist__wrapper__item__userimage">
-          <img src="@/assets/img/default.jpg" />
-          <router-link class="playerlist__wrapper__item__userimage__edit" to="/">
-            <img src="@/assets/img/settings.svg" />
-          </router-link>
-        </figure>
-        <h2 class="playerlist__wrapper__item__title">User Name</h2>
-      </div>
-      <div class="playerlist__wrapper__item">
-        <figure class="playerlist__wrapper__item__userimage">
-          <img src="@/assets/img/default.jpg" />
-          <router-link class="playerlist__wrapper__item__userimage__edit" to="/">
-            <img src="@/assets/img/settings.svg" />
-          </router-link>
-        </figure>
-        <h2 class="playerlist__wrapper__item__title">User Name</h2>
-      </div>
-      <div class="playerlist__wrapper__item">
-        <figure class="playerlist__wrapper__item__userimage">
-          <img src="@/assets/img/default.jpg" />
-          <router-link class="playerlist__wrapper__item__userimage__edit" to="/">
-            <img src="@/assets/img/settings.svg" />
-          </router-link>
-        </figure>
-        <h2 class="playerlist__wrapper__item__title">User Name</h2>
+        <div class="playerlist__wrapper__item__edit">
+          <select v-model="selectedUsers[index]" @change="updateUser(index, $event.target.value)">
+            <option v-for="option in userOptions" :key="option" :value="option">{{ option }}</option>
+          </select>
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-
+export default {
+  data() {
+    return {
+      users: Array(5).fill(null), // Inicializa com 5 itens vazios
+      selectedUsers: Array(5).fill(''), // Inicializa com 5 seleções vazias
+      userOptions: ["User 1", "User 2", "User 3", "User 4", "User 5"], // Opções de usuários
+    };
+  },
+  methods: {
+    updateUser(index, value) {
+      this.selectedUsers[index] = value;
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -101,27 +79,22 @@
           width: 100%;
           height: 100%;
         }
-
-        &__edit {
-          position: absolute;
-          bottom: -10px;
-          right: -10px;
-          height: 20px;
-          width: 32px;
-          object-fit: cover;
-          background: color(cBlack);
-          border: 1px solid color(cPrimary);
-
-          img {
-            height: 100%;
-          }
-        }
       }
 
-      &__title {
-        text-align: center;
-        color: color(cWhite);
-        font-size: 18px;
+      &__edit {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        select {
+          width: 100%;
+          background: none;
+          border: 1px solid color(cPrimary);
+          color: color(cWhite);
+          font-size: 14px;
+          cursor: pointer;
+        }
       }
     }
   }

@@ -10,10 +10,11 @@
       </div>
       <div class="inputitem__item__input">
         <div class="dropdown" :class="{ active: activeSlot === slotName }">
-          <p class="dropdown__selected" :class="{ 'empty': !selectedOptions[slotName] }" @click.stop="toggle(slotName)">
+          <p class="dropdown__selected pointer" :class="{ 'empty': !selectedOptions[slotName] }"
+            @click.stop="toggle(slotName)">
             {{ selectedOptions[slotName] || 'empty' }}
           </p>
-          <ul v-show="activeSlot === slotName" class="dropdown__options" role="listbox">
+          <ul v-show="activeSlot === slotName" class="dropdown__options pointer" role="listbox">
             <input type="text" v-model="filters[slotName]" @input="filterSelect(slotName)" placeholder="Filter..." />
             <li v-for="option in filteredOptions[slotName]" :key="option" @click="setCurrent(slotName, option)"
               :aria-selected="option === selectedOptions[slotName]">
@@ -127,6 +128,7 @@ export default {
       }
 
       h2 {
+        text-align: left;
         font-weight: 400;
         color: white;
         font-size: 14px;
@@ -146,7 +148,6 @@ export default {
           margin: 0;
           border: none;
           border-bottom: 1px solid color(cPrimary);
-          cursor: pointer;
           font-size: 14px;
           color: color(cWhite);
           transition: background 0.3s;
@@ -169,7 +170,7 @@ export default {
           margin: 0;
           top: 100%;
           left: 0;
-          z-index: 10;
+          z-index: 2;
           transition: opacity 0.3s ease-in-out;
 
           &::-webkit-scrollbar {
@@ -199,7 +200,6 @@ export default {
 
           li {
             padding: 6px;
-            cursor: pointer;
             color: white;
             font-size: 14px;
             transition: background 0.3s;
