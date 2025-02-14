@@ -35,8 +35,6 @@ export default {
       let index = cursorX.getAttribute('data-index')
       let size = cursorX.closest('.playergraphic').offsetWidth * parseInt(index)
       let gapSize = 16 + (parseInt(index) * 8)
-
-      console.log(size)
       if (cursorY, cursorX) {
         let posY = event.clientY - (window.innerHeight / 2) - 32
         cursorY.style.transform = `translateY(${posY}px)`;

@@ -3,27 +3,12 @@
     <GroupGraphic />
     <PlayerGraphic />
     <form class="editstatus__form">
-      <H2>Meta Status</H2>
+      <h2>Meta Status</h2>
       <div class="editstatus__form__wrapper">
-        <div class="editstatus__form__wrapper__content">
-          <input class="input__1" type="number" min="0" max="99999">
-          <h2>Primary</h2>
-        </div>
-        <div class="editstatus__form__wrapper__content">
-          <input class="input__2" type="number" min="0" max="99999">
-          <h2>Critic</h2>
-        </div>
-        <div class="editstatus__form__wrapper__content">
-          <input class="input__3" type="number" min="0" max="99999">
-          <h2>Haste</h2>
-        </div>
-        <div class="editstatus__form__wrapper__content">
-          <input class="input__4" type="number" min="0" max="99999">
-          <h2>Mastery</h2>
-        </div>
-        <div class="editstatus__form__wrapper__content">
-          <input class="input__5" type="number" min="0" max="99999">
-          <h2>Versatility</h2>
+        <div class="editstatus__form__wrapper__content" v-for="(status, index) in statuses" :key="index">
+          <input :class="'input__' + (index + 1)" type="number" min="0" max="99999" placeholder="empty"
+            v-model="status.value">
+          <h2 :class="{ 'error': !status.value }">{{ status.name }}</h2>
         </div>
       </div>
       <div class="editstatus__form__buttons">
@@ -45,7 +30,18 @@ export default {
     PlayerGraphic,
     GroupGraphic,
     CustomButton,
-  }
+  },
+  data() {
+    return {
+      statuses: [
+        { name: 'Primary', value: '' },
+        { name: 'Critic', value: '' },
+        { name: 'Haste', value: '' },
+        { name: 'Mastery', value: '' },
+        { name: 'Versatility', value: '' },
+      ],
+    };
+  },
 };
 </script>
 
@@ -94,6 +90,12 @@ export default {
             -webkit-appearance: none;
             margin: 0;
           }
+
+          &::placeholder {
+            font-size: 16px;
+            font-weight: 400;
+            color: color(cWhite);
+          }
         }
 
         .input {
@@ -124,6 +126,11 @@ export default {
           font-size: 18px;
           font-weight: 400;
           color: color(cWhite);
+
+          &.error {
+            animation: blink 1s step-start infinite;
+            color: red;
+          }
         }
       }
     }
@@ -152,6 +159,12 @@ export default {
         }
       }
     }
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
   }
 }
 </style>

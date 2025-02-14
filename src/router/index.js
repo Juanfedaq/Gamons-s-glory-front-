@@ -9,6 +9,7 @@ import UserReset from "@/views/Login/UserReset.vue";
 import UserCreate from "@/views/Login/UserCreate.vue";
 import UserResetPass from "@/views/Login/UserResetPass.vue";
 import UserPage from "@/views/UserPage.vue";
+import CreatePage from "@/views/CreatePage.vue";
 
 const routes = [
   {
@@ -28,6 +29,10 @@ const routes = [
       {
         path: '',
         component: GroupsPage,
+      },
+      {
+        path: '/createpage',
+        component: CreatePage,
       },
       {
         path: ':groups',

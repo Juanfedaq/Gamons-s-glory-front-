@@ -48,7 +48,8 @@ input,
   cursor: url('../public/cursor-pointer.svg'), pointer;
 }
 
-section {
+section,
+form {
   animation: fadeIn 1s ease-in-out forwards;
 }
 

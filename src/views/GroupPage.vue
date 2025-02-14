@@ -47,7 +47,8 @@ export default {
   grid-template-rows: 50%;
 
   section,
-  a {
+  a,
+  form {
     height: calc(50% - 4px);
     grid-column: span 2;
     transition: .3s ease-in-out;

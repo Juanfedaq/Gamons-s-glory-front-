@@ -9,7 +9,7 @@
         <h2>{{ slotName }}</h2>
       </div>
       <div class="inputitem__item__input">
-        <div class="dropdown" :class="{ active: activeSlot === slotName }">
+        <div class="dropdown" :class="[{ active: activeSlot === slotName }, { invert: invert.includes(slotName) }]">
           <p class="dropdown__selected pointer" :class="{ 'empty': !selectedOptions[slotName] }"
             @click.stop="toggle(slotName)">
             {{ selectedOptions[slotName] || 'empty' }}
@@ -49,6 +49,7 @@ export default {
         MainHand: { opcoes: ["manga", "tangerina", "limão", "maracujá"] },
         OffHand: { opcoes: ["manga", "tangerina", "limão", "maracujá"] },
       },
+      invert: ["Trinket1", "Trinket2", "MainHand", "OffHand"],
       selectedOptions: {},
       filters: {},
       filteredOptions: {},
@@ -57,11 +58,9 @@ export default {
   },
   methods: {
     filterSelect(slotName) {
-      this.filteredOptions[slotName] = this.filters[slotName]
-        ? this.slots[slotName].opcoes.filter((item) =>
-          item.toLowerCase().includes(this.filters[slotName].toLowerCase())
-        )
-        : this.slots[slotName].opcoes;
+      this.filteredOptions[slotName] = (this.filters[slotName].toLowerCase() != "") ? this.slots[slotName].opcoes.filter((item) =>
+        item.toLowerCase().includes(this.filters[slotName].toLowerCase())
+      ) : []
     },
     toggle(slotName) {
       this.activeSlot = this.activeSlot === slotName ? null : slotName;
@@ -78,7 +77,7 @@ export default {
   },
   created() {
     Object.keys(this.slots).forEach((slot) => {
-      this.filteredOptions[slot] = this.slots[slot].opcoes;
+      // this.filteredOptions[slot] = this.slots[slot].opcoes;
       this.filters[slot] = "";
     });
     document.addEventListener("click", this.closeDropdown);
@@ -143,6 +142,17 @@ export default {
 
       .dropdown {
         position: relative;
+
+        &.invert {
+          .dropdown__options {
+            top: auto;
+            bottom: 100%;
+            display: flex;
+            flex-direction: column-reverse;
+            border: 1px solid color(cPrimary);
+            border-bottom: none;
+          }
+        }
 
         &__selected {
           margin: 0;

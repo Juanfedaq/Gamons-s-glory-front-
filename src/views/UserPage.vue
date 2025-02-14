@@ -15,12 +15,15 @@
         <label for="characterName">Nome do Personagem</label>
         <input type="text" id="characterName" v-model="characterName" />
       </div>
-      <button type="submit" class="userpage__form__button">Salvar</button>
+      <CustomButton type="submit" variant="primary" size="lg">Save</CustomButton>
+      <CustomButton type="submit" variant="primary" size="lg">Cancel</CustomButton>
     </form>
   </div>
 </template>
 
 <script>
+import CustomButton from '@/components/CustomButton.vue';
+
 export default {
   data() {
     return {
@@ -28,6 +31,9 @@ export default {
       userName: '',
       characterName: '',
     };
+  },
+  components: {
+    CustomButton
   },
   methods: {
     onImageChange(event) {
@@ -41,7 +47,7 @@ export default {
       }
     },
     saveProfile() {
-      // Aqui você pode adicionar a lógica para salvar o perfil do usuário, como fazer uma chamada de API
+      // Aqui você pode a lógica para salvar o perfil do usuário, como fazer uma chamada de API
       console.log('Perfil salvo:', {
         userImage: this.userImage,
         userName: this.userName,
