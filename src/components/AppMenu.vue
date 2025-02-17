@@ -3,24 +3,51 @@
     <div class="appmenu__wrapper">
       <router-link to="/groups">
         <figure class="appmenu__wrapper__logo">
-          <img src="@/assets/img/logo.svg" alt="">
+          <img src="@/assets/img/logo.svg" alt="Logo">
         </figure>
       </router-link>
-      <h2>User Name</h2>
-      <h3>Char name</h3>
+      <h2>{{ user && user.name }}</h2>
+      <h3>{{ getCharName() }}</h3>
       <router-link to="/edit">
-        <figure><img src="@/assets/img/edit.svg" alt=""></figure>
+        <figure><img src="@/assets/img/edit.svg" alt="Edit"></figure>
       </router-link>
     </div>
-    <router-link to="/login">
-      Logout
-    </router-link>
+    <a @click.prevent="handleLogout">Logout</a>
   </header>
 </template>
 
 <script>
+import api from "@/services/api";
+import { mapActions } from "vuex";
+
 export default {
   name: "AppMenu",
+  data() {
+    return {
+      user: null,
+    };
+  },
+  methods: {
+    ...mapActions(['logout']),
+    async getUser() {
+      try {
+        const response = await api.get("/me");
+        this.user = response.data;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    getCharName() {
+      return this.user && this.user.character ? this.user.character : "select your character";
+    },
+    async handleLogout() {
+      await this.logout();
+      this.$router.push('/login');
+    },
+  },
+  created() {
+    this.getUser();
+  },
 };
 </script>
 
@@ -31,6 +58,8 @@ export default {
   align-items: center;
   padding-bottom: 8px;
   width: 100%;
+  position: relative;
+  z-index: 4;
 
   &__wrapper {
     display: flex;

@@ -7,6 +7,7 @@ const store = createStore({
     return {
       logged: false,
       page: "login",
+      token: null,
     };
   },
   mutations: {
@@ -16,14 +17,21 @@ const store = createStore({
     SET_PAGE(state, value) {
       state.page = value;
     },
+    SET_TOKEN(state, value) {
+      state.token = value;
+    }
   },
   actions: {
-    login({ commit }) {
+    login({ commit }, payload) {
       commit("SET_LOGGED", true);
+      commit("SET_TOKEN", payload);
+      VueCookies.set("token", payload);
       VueCookies.set("logged", true);
     },
     logout({ commit }) {
       commit("SET_LOGGED", false);
+      commit("SET_TOKEN", null);
+      VueCookies.remove("token");
       VueCookies.set("logged", false);
     },
     currentpage({ commit }, value) {

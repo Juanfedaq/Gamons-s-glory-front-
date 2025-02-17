@@ -1,6 +1,5 @@
 <template>
   <div class="loginpage">
-    <HeaderMenu />
     <form @submit.prevent="handleRecovery">
       <h3>Forgot your password?</h3>
       <h3>
@@ -19,14 +18,12 @@
 <script>
 import CustomInput from "@/components/CustomInput.vue";
 import CustomButton from "@/components/CustomButton.vue";
-import HeaderMenu from "@/components/HeaderMenu.vue";
 import api from "@/services/api";
 
 export default {
   components: {
     CustomInput,
     CustomButton,
-    HeaderMenu,
   },
   data() {
     return {
@@ -38,13 +35,13 @@ export default {
   methods: {
     handleRecovery() {
       if (!this.validateEmail(this.email)) {
-        this.errorMessage = "Por favor, insira um email válido";
+        this.errorMessage = "Please enter a valid email address";
         this.successMessage = "";
         return;
       }
 
-      console.log("Email para recuperação de senha:", this.email);
-      this.successMessage = "Instruções enviadas para o seu email";
+      console.log("Email for password recovery:", this.email);
+      this.successMessage = "Instructions sent to your email";
       this.sendmail();
       this.email = "";
     },
@@ -61,7 +58,7 @@ export default {
       } catch (error) {
         this.errorMessage = error.response
           ? error.response.data.error
-          : "Erro de rede";
+          : "Network error";
       }
     },
   },

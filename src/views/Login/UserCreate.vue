@@ -1,6 +1,5 @@
 <template>
   <div class="loginpage">
-    <HeaderMenu />
     <form @submit.prevent="handleSignup">
       <CustomInput type="text" id="username" v-model="username" placeholder="User Name" required />
       <CustomInput type="email" id="email" v-model="email" placeholder="E-mail" required />
@@ -17,13 +16,12 @@
 <script>
 import CustomInput from "@/components/CustomInput.vue";
 import CustomButton from "@/components/CustomButton.vue";
-import HeaderMenu from "@/components/HeaderMenu.vue";
+import api from "@/services/api";
 
 export default {
   components: {
     CustomInput,
     CustomButton,
-    HeaderMenu,
   },
   data() {
     return {
@@ -37,20 +35,19 @@ export default {
   methods: {
     async handleSignup() {
       try {
-        const response = await api.post("/register", {
-          username: this.username,
-          email: this.email,
-          password: this.password,
-        });
-
         if (this.password !== this.confirmPassword) {
           this.error = "As senhas não coincidem";
           return;
         }
 
-        console.log("Usuário:", this.username);
-        console.log("Email:", this.email);
-        console.log("Senha:", this.password);
+        const response = await api.post("/users", {
+          name: this.username,
+          email: this.email,
+          password: this.password,
+        });
+        if (response.status === 201) {
+          this.$router.push("/login");
+        }
       } catch (error) {
         this.error = error.response
           ? error.response.data.error

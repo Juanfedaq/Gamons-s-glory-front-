@@ -1,6 +1,5 @@
 <template>
   <div class="loginpage">
-    <HeaderMenu />
     <form @submit.prevent="handleNewPassword">
       <h3>
         Please enter your new password below. Make sure it's something secure
@@ -20,14 +19,12 @@
 <script>
 import CustomInput from "@/components/CustomInput.vue";
 import CustomButton from "@/components/CustomButton.vue";
-import HeaderMenu from "@/components/HeaderMenu.vue";
 import api from "@/services/api";
 
 export default {
   components: {
     CustomInput,
     CustomButton,
-    HeaderMenu,
   },
   data() {
     return {
@@ -40,13 +37,13 @@ export default {
   methods: {
     handleNewPassword() {
       if (this.newPassword !== this.confirmPassword) {
-        this.errorMessage = "As senhas não coincidem";
+        this.errorMessage = "Passwords do not match";
         this.successMessage = "";
         return;
       }
 
-      console.log("Nova senha:", this.newPassword);
-      this.successMessage = "Senha atualizada com sucesso";
+      console.log("New password:", this.newPassword);
+      this.successMessage = "Password updated successfully";
       this.errorMessage = "";
       this.ChangePass();
       this.newPassword = "";
@@ -61,9 +58,9 @@ export default {
         console.log(response);
         this.$router.push("/");
       } catch (error) {
-        this.error = error.response
+        this.errorMessage = error.response
           ? error.response.data.error
-          : "Erro de rede";
+          : "Network error";
       }
     },
   },
