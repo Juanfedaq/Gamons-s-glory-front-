@@ -15,7 +15,6 @@
     <div class="custom-cursor custom-cursor--1" ref="cursorY"></div>
     <div class="custom-cursor custom-cursor--2" ref="cursorX" :data-index="index"></div>
   </router-link>
-
 </template>
 
 <script>
@@ -40,7 +39,6 @@ export default {
         cursorY.style.transform = `translateY(${posY}px)`;
         cursorX.style.transform = `translate(${(event.clientX - size - gapSize)}px, ${posY - 15}px)`;
       }
-
     },
     removeCursor() {
       const cursorY = this.$refs.cursorY;
@@ -97,8 +95,7 @@ export default {
       }
       return value.toString(); // Exibe normal se for menor que 1.000
     },
-  }
-  ,
+  },
   created() {//entra aqui logo quando carrega o componente
     this.getItens()
   }

@@ -1,18 +1,23 @@
 <template>
-  <button :class="[
+  <component :is="componentType" :class="[
     'custom-button',
     size,
     variant,
     { disabled: isDisabled },
-  ]" :disabled="isDisabled" @click="handleClick">
+  ]" :disabled="isDisabled" @click="handleClick" v-bind="componentProps">
     <slot />
-  </button>
+  </component>
 </template>
 
 <script>
 export default {
   name: "CustomButton",
   props: {
+    type: {
+      type: String,
+      default: "button", // opções: button, link
+      validator: (value) => ["button", "link"].includes(value),
+    },
     size: {
       type: String,
       default: "md", // opções: sm, md, lg
@@ -20,13 +25,25 @@ export default {
     },
     variant: {
       type: String,
-      default: "primary", // opções: primary, secondary, danger
+      default: "primary", // opções: primary, secondary, danger, success
       validator: (value) =>
         ["primary", "secondary", "danger", "success"].includes(value),
     },
     isDisabled: {
       type: Boolean,
       default: false,
+    },
+    to: {
+      type: String,
+      default: "",
+    },
+  },
+  computed: {
+    componentType() {
+      return this.type === "link" ? "router-link" : "button";
+    },
+    componentProps() {
+      return this.type === "link" ? { to: this.to } : {};
     },
   },
   methods: {
@@ -50,7 +67,6 @@ export default {
   transition: all 0.3s ease;
   margin-top: 40px;
 }
-
 
 .primary {
   border: 1px solid color(cPrimary);
@@ -79,10 +95,7 @@ export default {
   font-size: 24px;
 }
 
-/* Disabled */
 .disabled {
-  background-color: #d6d6d6;
-  color: #a1a1a1;
   cursor: not-allowed;
 }
 </style>

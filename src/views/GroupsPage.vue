@@ -1,10 +1,7 @@
 <template>
   <section class="groupspage">
-    <GroupItem />
-    <GroupItem />
-    <GroupItem />
-    <GroupItem />
-    <RouterLink to="/createpage" class="create-group-button">
+    <GroupItem v-for="group in groups" :key="group.id" :group="group" />
+    <RouterLink to="/groups/create" class="create-group-button">
       +
     </RouterLink>
   </section>
@@ -16,6 +13,24 @@ import GroupItem from "@/components/GroupItem.vue";
 export default {
   components: {
     GroupItem,
+  },
+  data() {
+    return {
+      groups: []
+    };
+  },
+  created() {
+    this.fetchGroups();
+  },
+  methods: {
+    async fetchGroups() {
+      try {
+        const response = await this.$api.get('/users/groups');
+        this.groups = response.data.groups;
+      } catch (error) {
+        console.error('Error fetching groups:', error);
+      }
+    }
   }
 };
 </script>

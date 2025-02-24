@@ -8,7 +8,7 @@
       </router-link>
       <h2>{{ user && user.name }}</h2>
       <h3>{{ getCharName() }}</h3>
-      <router-link to="/edit">
+      <router-link to="/groups/edit">
         <figure><img src="@/assets/img/edit.svg" alt="Edit"></figure>
       </router-link>
     </div>
@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import api from "@/services/api";
 import { mapActions } from "vuex";
 
 export default {
@@ -31,7 +30,7 @@ export default {
     ...mapActions(['logout']),
     async getUser() {
       try {
-        const response = await api.get("/me");
+        const response = await this.$api.get("/me");
         this.user = response.data;
       } catch (error) {
         console.error(error);

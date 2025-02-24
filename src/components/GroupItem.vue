@@ -1,15 +1,22 @@
 <template>
-  <router-link class="groupitem" to="/groups/test">
+  <router-link class="groupitem" :to="`/groups/${group.id}`">
     <figure>
       <span></span>
-      <h2>Group Name</h2>
-      <img src="@/assets/img/default.jpg" alt="">
+      <h2>{{ group.name }}</h2>
+      <img :src="group.image || '@/assets/img/default.jpg'" alt="Group Image">
     </figure>
   </router-link>
 </template>
 
 <script>
-
+export default {
+  props: {
+    group: {
+      type: Object,
+      required: true
+    }
+  }
+};
 </script>
 
 <style scoped lang="scss">

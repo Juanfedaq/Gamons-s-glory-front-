@@ -23,40 +23,40 @@ const routes = [
     component: AppPage,
     children: [
       {
-        path: "/edit",
-        component: UserPage,
-      },
-      {
-        path: '',
+        path: "",
         component: GroupsPage,
       },
       {
-        path: '/createpage',
+        path: "create",
         component: CreatePage,
       },
       {
-        path: ':groups',
-        component: GroupPage,
+        path: ":groupId",
+        component: CreatePage,
       },
       {
-        path: '/:group/:name',
+        path: ":groupId/:name",
         component: PlayerPage,
-      }
+      },
     ],
   },
+
   {
     path: "/login",
     name: "login",
     component: UserLogin,
-  }, {
-    path: "/singup",
-    name: "singup",
+  },
+  {
+    path: "/signup",
+    name: "signup",
     component: UserCreate,
-  }, {
+  },
+  {
     path: "/reset",
     name: "reset",
     component: UserReset,
-  }, {
+  },
+  {
     path: "/resetpass",
     name: "resetpass",
     component: UserResetPass,
